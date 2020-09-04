@@ -53,7 +53,7 @@ Figure 1 illustrates the major structural components and design patterns that co
 
 图1说明了组成JAWS框架[1]的主要结构组件和设计模式。JAWS旨在允许定制各种Web服务器策略，以响应环境因素。这些因素包括静态因素(例如，可用cpu的数量，对内核级线程的支持，以及操作系统中异步I/O的可用性)，以及动态因素(例如，Web流量模式和工作负载特征)。
 
-![image-20200831121351900](E:\markdownimg\image-20200831121351900.png)
+![image-20200831121351900](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831121351900.png?raw=true)
 
 JAWS is structured as a framework of frameworks. The overall JAWS framework contains the following components and frameworks: an Event Dispatcher, Concurrency Strategy, I/O Strategy, Protocol Pipeline, Protocol Handlers, and Cached Virtual Filesystem. Each framework is structured as a set of collaborating objects implemented using components in ACE [5]. The collaborations among JAWS components and frameworks are guided by a family of patterns, which are listed along the borders in Figure 1. An outline of the key frameworks, components, and patterns in JAWS is presented below; Section 4 then focuses on the Proactor pattern in detail.1 
 
@@ -151,7 +151,7 @@ The sequence of steps that each thread uses to service an HTTP GET request using
 - The file is synchronously sent to the client.
 - 文件被同步发送到客户端。
 
-![image-20200831140552159](E:\markdownimg\image-20200831140552159.png)
+![image-20200831140552159](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831140552159.png?raw=true)
 
 As described above, each concurrently connected client is serviced by a dedicated server thread. The thread completes a requested operation synchronously before servicing other HTTP requests. Therefore, to perform synchronous I/O while servicing multiple clients, JAWS must spawn multiple threads
 
@@ -197,7 +197,7 @@ Figures 3 and 4 show how the JAWS Web server configured using proactive event di
 图3和图4显示了使用主动事件分派配置的JAWS Web服务器如何在一个或多个线程中并发地处理多个客户机。
 图3显示了客户机连接到JAWS时所采取的一系列步骤。
 
-![image-20200831142312249](E:\markdownimg\image-20200831142312249.png)
+![image-20200831142312249](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831142312249.png?raw=true)
 
 - JAWS instructs the Async Acceptor to initiate an asynchronous accept;
 - JAWS指示异步接受者发起一个异步接受;
@@ -221,7 +221,7 @@ Figure 4 shows the sequence of steps that the JAWS uses to service an HTTP GET r
 
 图4显示了JAWS在使用主动事件分派配置时为HTTP GET请求提供服务的步骤序列。这些步骤概述如下:
 
-![image-20200831144400759](E:\markdownimg\image-20200831144400759.png)
+![image-20200831144400759](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831144400759.png?raw=true)
 
 - The client sends an HTTP GET request;
 - 客户端发送一个HTTP GET请求;
@@ -261,7 +261,7 @@ To gain an understanding of how different concurrency and event dispatching mech
 
 Our hardware testbed is shown in Figure 5.  
 
-![image-20200831160207370](E:\markdownimg\image-20200831160207370.png)
+![image-20200831160207370](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831160207370.png?raw=true)
 
 
 
@@ -281,19 +281,19 @@ The file access pattern used in the tests is shown in Table 1. This table repres
 
 测试中使用的文件访问模式如表1所示。这个表 表示流行服务器上的实际负载条件，它基于SPEC对文件访问模式的研究
 
-![image-20200831163817056](E:\markdownimg\image-20200831163817056.png)
+![image-20200831163817056](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831163817056.png?raw=true)
 
 ### Experimental Results  
 
-![image-20200831164058604](E:\markdownimg\image-20200831164058604.png)
+![image-20200831164058604](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831164058604.png?raw=true)
 
-![image-20200831164119140](E:\markdownimg\image-20200831164119140.png)
+![image-20200831164119140](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831164119140.png?raw=true)
 
-![image-20200831164136333](E:\markdownimg\image-20200831164136333.png)
+![image-20200831164136333](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831164136333.png?raw=true)
 
-![image-20200831164152495](E:\markdownimg\image-20200831164152495.png)
+![image-20200831164152495](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831164152495.png?raw=true)
 
-![image-20200831164207672](E:\markdownimg\image-20200831164207672.png)
+![image-20200831164207672](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200831164207672.png?raw=true)
 
 The results presented below compare the performance of several different adaptations of the JAWS Web server. We discuss the effect of different event dispatching and I/O models on throughput and latency. Throughput is defined as the average number of bits received per second by the client. A high-resolution timer for throughput measurement was started before the client benchmarking software sent the HTTP request. The high-resolution timer stops just after the connection is closed at the client end. The number of bits received includes the HTML headers sent by the server
 
@@ -377,7 +377,7 @@ Use the Proactor pattern when one or more of the following conditions hold:
 
 The structure of the Proactor pattern is illustrated in Figure 11 using OMT notation.  
 
-![image-20200904143005233](E:\markdownimg\image-20200904143005233.png)
+![image-20200904143005233](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200904143005233.png?raw=true)
 
 The key participants in the Proactor pattern include the following:
 **Proactive Initiator** (Web server application’s main thread):  
@@ -422,13 +422,13 @@ This component is typically implemented by the OS.
 
 完成分派器负责在异步操作完成时回调应用程序的完成处理程序。当异步操作处理器完成异步启动的操作时，完成分派器代表它执行一个应用程序回调。
 
-![image-20200904155438780](E:\markdownimg\image-20200904155438780.png)
+![image-20200904155438780](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200904155438780.png?raw=true)
 
 ## COLLABORATIONS  协作
 
 There are several well-defined steps that occur for all Asynchronous Operations. At a high level of abstraction, applications initiate operations asynchronously and are notified when the operations complete. Figure 12 shows the following interactions that must occur between the pattern participants:
 
-![image-20200904161434100](E:\markdownimg\image-20200904161434100.png)
+![image-20200904161434100](https://github.com/xumingze2014/Three-web-like-processing-methods/blob/master/img/image-20200904161434100.png?raw=true)
 
 对于所有异步操作，都有几个定义良好的步骤。在较高的抽象级别上，应用程序异步地启动操作，并在操作完成时得到通知。图12显示了模式参与者之间必须发生的以下交互:
 
